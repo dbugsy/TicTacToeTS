@@ -14,6 +14,6 @@ export default class Game {
 
   public play(player: Player, location: Location): void {
     const targetCell = this.board.cellAt(location);
-    this.turn.play(player, targetCell);
+    this.turn.play(player);
   }
 }

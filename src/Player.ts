@@ -12,7 +12,7 @@ export default class Player {
     this.name = name;
   }
 
-  public play(turn: PlayerName): void {
+  public checkTurn(turn: PlayerName): void {
     if (this._isDifferent(turn)) {
       throw new Error(Player.OUT_OF_TURN_ERROR_MESSAGE);
     }

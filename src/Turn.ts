@@ -1,4 +1,3 @@
-import Cell from "./Cell";
 import Player from "./Player";
 import { PlayerName } from "./PlayerName";
 
@@ -10,8 +9,8 @@ export default class Turn {
     this.isPlayerTurnX = true;
   }
 
-  public play(player: Player, targetCell: Cell): void {
-    player.play(this._playerTurn(), targetCell);
+  public play(player: Player): void {
+    player.checkTurn(this._playerTurn());
     this._toggleTurn();
   }
 

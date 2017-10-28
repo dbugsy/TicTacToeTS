@@ -30,6 +30,6 @@ describe("Game", () => {
 
     game.play(mockPlayer, Location.TOP_LEFT);
 
-    expect(mockTurn.play).toHaveBeenCalledWith(mockPlayer, mockCell);
+    expect(mockTurn.play).toHaveBeenCalledWith(mockPlayer);
   });
 });
