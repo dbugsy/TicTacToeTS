@@ -28,7 +28,6 @@ describe("Game", () => {
 
     game.play(mockLocation);
 
-    expect(mockTurn.playerName).toHaveBeenCalled();
     expect(mockBoard.play).toHaveBeenCalledWith(mockPlayerName, mockLocation);
   });
 });

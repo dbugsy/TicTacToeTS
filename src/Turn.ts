@@ -1,4 +1,3 @@
-import Player from "./Player";
 import { PlayerName } from "./PlayerName";
 
 export default class Turn {
@@ -6,12 +5,12 @@ export default class Turn {
   private isPlayerTurnX: boolean;
 
   constructor() {
-    this.isPlayerTurnX = true;
+    this.isPlayerTurnX = false;
   }
 
-  public play(player: Player): void {
-    player.checkTurn(this._playerTurn());
+  public playerName(): PlayerName {
     this._toggleTurn();
+    return this._playerTurn();
   }
 
   private _toggleTurn(): void {
