@@ -1,35 +1,34 @@
 import {} from "jest";
 import Board from "../src/Board";
-import Cell from "../src/Cell";
 import Game from "../src/Game";
 import {Location} from "../src/Location";
-import Player from "../src/Player";
 import { PlayerName } from "../src/PlayerName";
 import Turn from "../src/Turn";
 
 describe("Game", () => {
-  it("sends a player and a cell to a turn", () => {
-    const MockCell = jest.fn<Cell>();
-    const mockCell = new MockCell();
+  it("sends a player and a location to the board", () => {
 
-    const cellAt = jest.fn().mockReturnValue(mockCell);
     const MockBoard = jest.fn<Board>( () => ({
-      cellAt,
+      play: jest.fn(),
     }));
     const mockBoard = new MockBoard();
 
-    const MockPlayer = jest.fn<Player>();
-    const mockPlayer = new MockPlayer();
+    const MockPlayerName = jest.fn<PlayerName>();
+    const mockPlayerName = new MockPlayerName();
+
+    const MockLocation = jest.fn<Location>();
+    const mockLocation = new MockLocation();
 
     const MockTurn = jest.fn<Turn>( () => ({
-      play: jest.fn(),
+      playerName: jest.fn().mockReturnValue(mockPlayerName),
     }));
     const mockTurn = new MockTurn();
 
     const game = new Game (mockBoard, mockTurn);
 
-    game.play(mockPlayer, Location.TOP_LEFT);
+    game.play(mockLocation);
 
-    expect(mockTurn.play).toHaveBeenCalledWith(mockPlayer);
+    expect(mockTurn.playerName).toHaveBeenCalled();
+    expect(mockBoard.play).toHaveBeenCalledWith(mockPlayerName, mockLocation);
   });
 });

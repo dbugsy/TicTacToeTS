@@ -1,7 +1,6 @@
 import Turn from "../src/Turn";
 import Board from "./Board";
 import { Location } from "./Location";
-import Player from "./Player";
 
 export default class Game {
   private turn: Turn;
@@ -12,8 +11,8 @@ export default class Game {
     this.board = board || new Board();
   }
 
-  public play(player: Player, location: Location): void {
-    const targetCell = this.board.cellAt(location);
-    this.turn.play(player);
+  public play(location: Location): void {
+    const currentPlayer = this.turn.playerName();
+    this.board.play(currentPlayer, location);
   }
 }
