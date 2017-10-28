@@ -14,4 +14,8 @@ export default class Cell {
     }
     this.occupier = player;
   }
+
+  public hasSameOccupier(neighbours: [Cell]) {
+    throw new Error("Game won");
+  }
 }
