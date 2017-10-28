@@ -4,7 +4,7 @@ import { Location } from "./Location";
 import Player from "./Player";
 import { PlayerName } from "./PlayerName";
 
-export default class Board {
+export default class Game {
   private currentPlayer: Player;
   private cells: Cells;
 

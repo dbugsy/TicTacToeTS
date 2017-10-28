@@ -1,11 +1,11 @@
 import {} from "jest";
-import Board from "../src/Board";
 import Cell from "../src/Cell";
 import Cells from "../src/Cells";
+import Game from "../src/Game";
 import {Location} from "../src/Location";
 import Player from "../src/Player";
 
-describe("Board", () => {
+describe("Game", () => {
   it("sends a move to a player", () => {
     const MockCell = jest.fn<Cell>();
     const mockCell = new MockCell();
@@ -23,9 +23,9 @@ describe("Board", () => {
     const mockPlayer = new MockPlayer();
     const currentPlayer = new MockPlayer();
 
-    const board = new Board (mockCells, currentPlayer);
+    const game = new Game (mockCells, currentPlayer);
 
-    board.play(mockPlayer, Location.TOP_LEFT);
+    game.play(mockPlayer, Location.TOP_LEFT);
 
     expect(mockPlayer.play).toHaveBeenCalledWith(currentPlayer, mockCell);
   });
