@@ -5,19 +5,32 @@ import { PlayerName } from "../src/PlayerName";
 import Turn from "../src/Turn";
 
 describe("Turn", () => {
-  it("starts with turn X", () => {
-    const turn = new Turn();
+  let turn: Turn;
+  let mockPlayer: Player;
+  let targetCell: Cell;
+
+  beforeEach( () => {
+    turn = new Turn();
 
     const MockCell = jest.fn<Cell>();
-    const targetCell = new MockCell();
+    targetCell = new MockCell();
 
     const MockPlayer = jest.fn<Player>( () => ({
       play: jest.fn(),
     }));
-    const mockPlayer = new MockPlayer();
+    mockPlayer = new MockPlayer();
+  });
 
+  it("starts with turn X", () => {
     turn.play(mockPlayer, targetCell);
 
     expect(mockPlayer.play).toHaveBeenCalledWith(PlayerName.X, targetCell);
+  });
+
+  it("toggles the turn to O", () => {
+    turn.play(mockPlayer, targetCell);
+    turn.play(mockPlayer, targetCell);
+
+    expect(mockPlayer.play).lastCalledWith(PlayerName.O, targetCell);
   });
 });
