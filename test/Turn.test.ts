@@ -33,4 +33,12 @@ describe("Turn", () => {
 
     expect(mockPlayer.play).lastCalledWith(PlayerName.O, targetCell);
   });
+
+  it("toggles the turn to X again", () => {
+    turn.play(mockPlayer, targetCell);
+    turn.play(mockPlayer, targetCell);
+    turn.play(mockPlayer, targetCell);
+
+    expect(mockPlayer.play).lastCalledWith(PlayerName.X, targetCell);
+  });
 });
