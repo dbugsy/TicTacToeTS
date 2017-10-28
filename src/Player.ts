@@ -1,4 +1,3 @@
-import Cell from "./Cell";
 import {PlayerName} from "./PlayerName";
 const outOfTurnErrorMessage = "Wrong turn: it is not this player's turn.";
 
@@ -13,11 +12,10 @@ export default class Player {
     this.name = name;
   }
 
-  public play(turn: PlayerName, cell: Cell): void {
+  public play(turn: PlayerName): void {
     if (this._isDifferent(turn)) {
       throw new Error(Player.OUT_OF_TURN_ERROR_MESSAGE);
     }
-    cell.occupy(this);
   }
 
   private _isDifferent(otherName: PlayerName): boolean {
