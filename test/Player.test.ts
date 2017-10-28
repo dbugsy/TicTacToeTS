@@ -1,6 +1,6 @@
 import {} from "jest";
 import Player from "../src/Player";
-import PlayerNames from "../src/PlayerNames";
+import {PlayerName} from "../src/PlayerName";
 
 describe("Player", () => {
   let cell: any;
@@ -9,17 +9,17 @@ describe("Player", () => {
 
   beforeEach( () => {
     cell = {};
-    player = new Player(PlayerNames.X);
+    player = new Player(PlayerName.X);
   });
 
   it("will not play if it is not their turn", () => {
-    currentPlayer = new Player(PlayerNames.O);
+    currentPlayer = new Player(PlayerName.O);
 
     expect( () => player.play(currentPlayer, cell)).toThrow(new Error (Player.OUT_OF_TURN_ERROR_MESSAGE));
   });
 
   it("will play if it is their turn", () => {
-    currentPlayer = new Player(PlayerNames.X);
+    currentPlayer = new Player(PlayerName.X);
     const occupy = jest.fn();
     cell = {
       occupy,

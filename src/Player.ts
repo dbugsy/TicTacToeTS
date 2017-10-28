@@ -1,14 +1,15 @@
 import Cell from "./Cell";
+import {PlayerName} from "./PlayerName";
 const outOfTurnErrorMessage = "Wrong turn: it is not this player's turn.";
 
 export default class Player {
-  private name: string;
+  private name: PlayerName;
 
   public static get OUT_OF_TURN_ERROR_MESSAGE(): string {
     return outOfTurnErrorMessage;
   }
 
-  constructor(name: string) {
+  constructor(name: PlayerName) {
     this.name = name;
   }
 

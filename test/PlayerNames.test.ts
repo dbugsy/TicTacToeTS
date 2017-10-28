@@ -1,12 +1,12 @@
 import {} from "jest";
-import PlayerNames from "../src/PlayerNames";
+import {PlayerName} from "../src/PlayerName";
 
 describe("PlayerNames", () => {
   it("returns 'X'", () => {
-    expect(PlayerNames.X).toBe("X");
+    expect(PlayerName.X).toBe(0);
   });
 
   it("returns 'O'", () => {
-    expect(PlayerNames.O).toBe("O");
+    expect(PlayerName.O).toBe(1);
   });
 });
