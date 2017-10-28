@@ -13,15 +13,15 @@ export default class Player {
     this.name = name;
   }
 
-  public play(turn: Player, cell: Cell): void {
+  public play(turn: PlayerName, cell: Cell): void {
     if (this._isDifferent(turn)) {
       throw new Error(Player.OUT_OF_TURN_ERROR_MESSAGE);
     }
     cell.occupy(this);
   }
 
-  private _isDifferent(other: Player): boolean {
-    return !(this.name === other.name);
+  private _isDifferent(otherName: PlayerName): boolean {
+    return !(this.name === otherName);
   }
 
 }

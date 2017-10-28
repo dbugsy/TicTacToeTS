@@ -4,6 +4,7 @@ import Cell from "../src/Cell";
 import Game from "../src/Game";
 import {Location} from "../src/Location";
 import Player from "../src/Player";
+import { PlayerName } from "../src/PlayerName";
 
 describe("Game", () => {
   it("sends a move to a player", () => {
@@ -21,7 +22,7 @@ describe("Game", () => {
     ));
 
     const mockPlayer = new MockPlayer();
-    const currentPlayer = new MockPlayer();
+    const currentPlayer = PlayerName.X;
 
     const game = new Game (mockBoard, currentPlayer);
 

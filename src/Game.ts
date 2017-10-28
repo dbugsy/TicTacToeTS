@@ -5,16 +5,16 @@ import Player from "./Player";
 import { PlayerName } from "./PlayerName";
 
 export default class Game {
-  private currentPlayer: Player;
+  private currentTurn: PlayerName;
   private board: Board;
 
-  constructor(board: Board, currentPlayer?: Player) {
-    this.currentPlayer = currentPlayer || new Player(PlayerName.X);
+  constructor(board: Board, currentTurn?: PlayerName) {
+    this.currentTurn = currentTurn || PlayerName.X;
     this.board = board;
   }
 
   public play(player: Player, location: Location): void {
     const targetCell = this.board.cellAt(location);
-    player.play(this.currentPlayer, targetCell);
+    player.play(this.currentTurn, targetCell);
   }
 }

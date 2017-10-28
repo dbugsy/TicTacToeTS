@@ -1,5 +1,6 @@
 import Cell from "./Cell";
 import { Location } from "./Location";
+
 export default class Board {
   private cells: [Cell];
 
