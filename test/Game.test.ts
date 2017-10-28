@@ -5,9 +5,10 @@ import Game from "../src/Game";
 import {Location} from "../src/Location";
 import Player from "../src/Player";
 import { PlayerName } from "../src/PlayerName";
+import Turn from "../src/Turn";
 
 describe("Game", () => {
-  it("sends a move to a player", () => {
+  it("sends a player and a cell to a turn", () => {
     const MockCell = jest.fn<Cell>();
     const mockCell = new MockCell();
 
@@ -17,17 +18,18 @@ describe("Game", () => {
     }));
     const mockBoard = new MockBoard();
 
-    const MockPlayer = jest.fn<Player>( () => (
-      {play: jest.fn()}
-    ));
-
+    const MockPlayer = jest.fn<Player>();
     const mockPlayer = new MockPlayer();
-    const currentPlayer = PlayerName.X;
 
-    const game = new Game (mockBoard, currentPlayer);
+    const MockTurn = jest.fn<Turn>( () => ({
+      play: jest.fn(),
+    }));
+    const mockTurn = new MockTurn();
+
+    const game = new Game (mockBoard, mockTurn);
 
     game.play(mockPlayer, Location.TOP_LEFT);
 
-    expect(mockPlayer.play).toHaveBeenCalledWith(currentPlayer, mockCell);
+    expect(mockTurn.play).toHaveBeenCalledWith(mockPlayer, mockCell);
   });
 });
