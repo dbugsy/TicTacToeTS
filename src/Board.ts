@@ -1,10 +1,10 @@
 import Cell from "./Cell";
 import { Location } from "./Location";
-export default class Cells {
-  private all: [Cell];
+export default class Board {
+  private cells: [Cell];
 
   constructor() {
-    this.all = [
+    this.cells = [
       new Cell(),
       new Cell(),
       new Cell(),
@@ -18,6 +18,6 @@ export default class Cells {
   }
 
   public cellAt(location: Location): Cell {
-    return this.all[location];
+    return this.cells[location];
   }
 }

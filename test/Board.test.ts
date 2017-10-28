@@ -1,11 +1,11 @@
 import {} from "jest";
+import Board from "../src/Board";
 import Cell from "../src/Cell";
-import Cells from "../src/Cells";
 import { Location } from "../src/Location";
 
-describe("Cells", () => {
+describe("Board", () => {
   it("returns the cell", () => {
-    const cells = new Cells();
+    const cells = new Board();
     expect(cells.cellAt(Location.TOP_LEFT)).toBeInstanceOf(Cell);
   });
 });

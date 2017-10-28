@@ -1,20 +1,20 @@
+import Board from "./Board";
 import Cell from "./Cell";
-import Cells from "./Cells";
 import { Location } from "./Location";
 import Player from "./Player";
 import { PlayerName } from "./PlayerName";
 
 export default class Game {
   private currentPlayer: Player;
-  private cells: Cells;
+  private board: Board;
 
-  constructor(cells: Cells, currentPlayer?: Player) {
+  constructor(board: Board, currentPlayer?: Player) {
     this.currentPlayer = currentPlayer || new Player(PlayerName.X);
-    this.cells = cells;
+    this.board = board;
   }
 
   public play(player: Player, location: Location): void {
-    const targetCell = this.cells.cellAt(location);
+    const targetCell = this.board.cellAt(location);
     player.play(this.currentPlayer, targetCell);
   }
 }

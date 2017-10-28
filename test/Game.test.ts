@@ -1,6 +1,6 @@
 import {} from "jest";
+import Board from "../src/Board";
 import Cell from "../src/Cell";
-import Cells from "../src/Cells";
 import Game from "../src/Game";
 import {Location} from "../src/Location";
 import Player from "../src/Player";
@@ -11,10 +11,10 @@ describe("Game", () => {
     const mockCell = new MockCell();
 
     const cellAt = jest.fn().mockReturnValue(mockCell);
-    const MockCells = jest.fn<Cells>( () => ({
+    const MockBoard = jest.fn<Board>( () => ({
       cellAt,
     }));
-    const mockCells = new MockCells();
+    const mockBoard = new MockBoard();
 
     const MockPlayer = jest.fn<Player>( () => (
       {play: jest.fn()}
@@ -23,7 +23,7 @@ describe("Game", () => {
     const mockPlayer = new MockPlayer();
     const currentPlayer = new MockPlayer();
 
-    const game = new Game (mockCells, currentPlayer);
+    const game = new Game (mockBoard, currentPlayer);
 
     game.play(mockPlayer, Location.TOP_LEFT);
 
