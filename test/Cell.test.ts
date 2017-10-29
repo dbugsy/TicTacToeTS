@@ -26,6 +26,6 @@ describe("Cell", () => {
     neighbour1.occupy(mockOccupant);
     neighbour2.occupy(mockOccupant);
 
-    expect( () => cell.hasSameOccupier([neighbour1, neighbour2])).toThrow(new Error("Game won"));
+    expect( () => cell.hasSameOccupier([neighbour1, neighbour2])).toThrow("Game won");
   });
 });

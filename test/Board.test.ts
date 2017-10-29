@@ -21,6 +21,6 @@ describe("Board", () => {
 
     board.play(mockPlayerName, mockLocation);
 
-    expect(mockCells.occupy).toHaveBeenCalledWith(mockLocation, mockPlayerName)
+    expect(mockCells.occupy).toHaveBeenCalledWith(mockLocation, mockPlayerName);
   });
 });

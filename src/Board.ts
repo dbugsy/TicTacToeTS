@@ -9,6 +9,6 @@ export default class Board {
     this.cells = cells || new Cells();
   }
   public play(player: PlayerName, location: Location): void {
-    this.cells.occupy(player, location);
+    this.cells.occupy(location, player);
   }
 }
