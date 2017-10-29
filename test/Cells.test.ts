@@ -1,5 +1,6 @@
 import {} from "jest";
 import Cell from "../src/Cell";
+import CellFactory from "../src/CellFactory";
 import Cells from "../src/Cells";
 import { Location } from "../src/Location";
 import { PlayerName } from "../src/PlayerName";

@@ -1,22 +1,24 @@
 import Cell from "./Cell";
 import CellFactory from "./CellFactory";
 import { Location } from "./Location";
-import { PlayerName } from './PlayerName';
+import { PlayerName } from "./PlayerName";
 
 export default class Cells {
+  private cellFactory: CellFactory;
   private cells: [Cell];
 
   constructor(cellFactory?: CellFactory) {
+    this.cellFactory = cellFactory || new CellFactory();
     this.cells = [
-      cellFactory.spawn(),
-      cellFactory.spawn(),
-      cellFactory.spawn(),
-      cellFactory.spawn(),
-      cellFactory.spawn(),
-      cellFactory.spawn(),
-      cellFactory.spawn(),
-      cellFactory.spawn(),
-      cellFactory.spawn(),
+      this.cellFactory.spawn(),
+      this.cellFactory.spawn(),
+      this.cellFactory.spawn(),
+      this.cellFactory.spawn(),
+      this.cellFactory.spawn(),
+      this.cellFactory.spawn(),
+      this.cellFactory.spawn(),
+      this.cellFactory.spawn(),
+      this.cellFactory.spawn(),
     ];
   }
 
