@@ -7,7 +7,9 @@ import { PlayerName } from "../src/PlayerName";
 
 describe("Cells", () => {
   it("occupies the cell", () => {
+    const numberOfWinningCombinations = Cells.WINNING_COMBINATIONS.length;
     const MockCell = jest.fn<Cell>( () => ({
+      hasSameOccupier: jest.fn(),
       occupy: jest.fn(),
     }));
     const mockCell = new MockCell();
@@ -24,5 +26,6 @@ describe("Cells", () => {
 
     cells.occupy(location, mockPlayerName);
     expect(mockCell.occupy).toHaveBeenCalledWith(mockPlayerName);
+    expect(mockCell.hasSameOccupier).toHaveBeenCalledTimes(numberOfWinningCombinations);
   });
 });
