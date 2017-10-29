@@ -1,14 +1,15 @@
-import Player from "./Player";
+import { PlayerName } from "./PlayerName";
+
 const occupiedCellErrorMessage = "Bad move: Cell is already occupied";
 
 export default class Cell {
-  private occupier: Player;
+  private occupier: PlayerName;
 
   public static get OCCUPIED_CELL_ERROR_MESSAGE(): string {
     return occupiedCellErrorMessage;
   }
 
-  public occupy(player: Player): void {
+  public occupy(player: PlayerName): void {
     if (this.occupier) {
       throw new Error(Cell.OCCUPIED_CELL_ERROR_MESSAGE);
     }

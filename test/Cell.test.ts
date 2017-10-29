@@ -1,14 +1,14 @@
 import {} from "jest";
 import Cell from "../src/Cell";
-import Player from "../src/Player";
+import { PlayerName } from "../src/PlayerName";
 
 describe("Cell", () => {
   let cell: Cell;
-  let mockOccupant: Player;
-  let mockChallenger: Player;
+  let mockOccupant: PlayerName;
+  let mockChallenger: PlayerName;
 
   beforeEach( () => {
-    const MockPlayer = jest.fn<Player>();
+    const MockPlayer = jest.fn<PlayerName>();
     cell = new Cell();
     mockOccupant = new MockPlayer();
     mockChallenger = new MockPlayer();
