@@ -1,24 +1,14 @@
-import Cell from "./Cell";
+import Cells from "./Cells";
 import { Location } from "./Location";
+import { PlayerName } from "./PlayerName";
 
 export default class Board {
-  private cells: [Cell];
+  private cells: Cells;
 
-  constructor() {
-    this.cells = [
-      new Cell(),
-      new Cell(),
-      new Cell(),
-      new Cell(),
-      new Cell(),
-      new Cell(),
-      new Cell(),
-      new Cell(),
-      new Cell(),
-    ];
+  constructor(cells?: Cells) {
+    this.cells = cells || new Cells();
   }
-
-  public cellAt(location: Location): Cell {
-    return this.cells[location];
+  public play(player: PlayerName, location: Location): void {
+    this.cells.occupy(player, location);
   }
 }
