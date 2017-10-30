@@ -19,7 +19,7 @@ describe("Cell", () => {
     expect( () => cell.occupy(mockChallenger)).toThrowError(Cell.OCCUPIED_CELL_ERROR_MESSAGE);
   });
 
-  describe("checking if the game is won", () => {
+  describe("checking if the game is over", () => {
     let neighbour1: Cell;
     let neighbour2: Cell;
 
@@ -40,7 +40,7 @@ describe("Cell", () => {
       expect( () => cell.hasSameOccupier([neighbour1, neighbour2])).not.toThrowError();
     });
 
-    it("ends the game if same occupier as neighbours", () => {
+    it("wins the game if same occupier as neighbours", () => {
       cell.occupy(mockOccupant);
       const neighbour1 = new Cell();
       const neighbour2 = new Cell();
@@ -49,6 +49,17 @@ describe("Cell", () => {
       neighbour2.occupy(mockOccupant);
 
       expect( () => cell.hasSameOccupier([neighbour1, neighbour2])).toThrow("Game won");
+    });
+
+    it("ends the game with a draw if all cells are occupied", () => {
+      cell.occupy(mockOccupant);
+      const neighbour1 = new Cell();
+      const neighbour2 = new Cell();
+
+      neighbour1.occupy(mockOccupant);
+      neighbour2.occupy(mockOccupant);
+
+      expect( () => cell.isDraw([neighbour1, neighbour2])).toThrow("Game over - it's a draw");
     });
   });
 });

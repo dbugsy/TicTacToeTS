@@ -40,6 +40,7 @@ export default class Cells {
   public occupy(location: Location, playerName: PlayerName): void {
     this.cells[location].occupy(playerName);
     this._checkWinner();
+    this._isDraw();
   }
 
   private _checkWinner(): void {
@@ -49,5 +50,9 @@ export default class Cells {
       const cell3 = this.cells[combo[2]];
       cell1.hasSameOccupier([cell2, cell3]);
     });
+  }
+
+  private _isDraw(): void {
+    this.cells[0].isDraw(this.cells);
   }
 }

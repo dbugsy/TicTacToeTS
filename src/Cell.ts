@@ -22,6 +22,10 @@ export default class Cell {
     }
   }
 
+  public isDraw(neighbours: [Cell]): void {
+    throw Error("Game over - it's a draw");
+  }
+
   private _hasSameOccupier(other: Cell): boolean {
     if (!this.occupier) { return false; }
     return this.occupier === other.occupier;

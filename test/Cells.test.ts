@@ -9,11 +9,13 @@ describe("Cells", () => {
   let cells: Cells;
   let mockCell: Cell;
   let mockPlayerName: PlayerName;
+  let otherPlayerName: PlayerName;
   let location: Location;
 
   beforeEach( () => {
     const MockCell = jest.fn<Cell>( () => ({
       hasSameOccupier: jest.fn(),
+      isDraw: jest.fn(),
       occupy: jest.fn(),
     }));
     mockCell = new MockCell();
@@ -26,7 +28,8 @@ describe("Cells", () => {
     location = Location.TOP_LEFT;
 
     const MockPlayerName = jest.fn<PlayerName>();
-    mockPlayerName = new MockPlayerName();
+    mockPlayerName = new MockPlayerName("X");
+    otherPlayerName = new MockPlayerName("O");
   });
 
   it("occupies the cell", () => {
@@ -40,5 +43,11 @@ describe("Cells", () => {
 
     cells.occupy(location, mockPlayerName);
     expect(mockCell.hasSameOccupier).toHaveBeenCalledTimes(numberOfWinningCombinations);
+  });
+
+  it("checks for a draw", () => {
+    cells.occupy(Location.TOP_LEFT, mockPlayerName); // X
+
+    expect(mockCell.isDraw).toHaveBeenCalled();
   });
 });
