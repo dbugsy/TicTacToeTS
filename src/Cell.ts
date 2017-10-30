@@ -16,13 +16,13 @@ export default class Cell {
     this.occupier = playerName;
   }
 
-  public hasSameOccupier(neighbours: [Cell]) {
-    if (this._hasSameOccupant(neighbours[0]) && this._hasSameOccupant(neighbours[1])) {
+  public hasSameOccupier(neighbours: [Cell]): void {
+    if (this._hasSameOccupier(neighbours[0]) && this._hasSameOccupier(neighbours[1])) {
       throw new Error("Game won");
     }
   }
 
-  private _hasSameOccupant(other: Cell): boolean {
+  private _hasSameOccupier(other: Cell): boolean {
     if (!this.occupier) { return false; }
     return this.occupier === other.occupier;
   }

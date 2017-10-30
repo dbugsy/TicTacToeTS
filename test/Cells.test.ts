@@ -6,26 +6,39 @@ import { Location } from "../src/Location";
 import { PlayerName } from "../src/PlayerName";
 
 describe("Cells", () => {
-  it("occupies the cell", () => {
-    const numberOfWinningCombinations = Cells.WINNING_COMBINATIONS.length;
+  let cells: Cells;
+  let mockCell: Cell;
+  let mockPlayerName: PlayerName;
+  let location: Location;
+
+  beforeEach( () => {
     const MockCell = jest.fn<Cell>( () => ({
       hasSameOccupier: jest.fn(),
       occupy: jest.fn(),
     }));
-    const mockCell = new MockCell();
+    mockCell = new MockCell();
 
     const MockCellFactory = jest.fn<CellFactory>( () => ({
       spawn: jest.fn().mockReturnValue(mockCell),
     }));
-    const cells = new Cells(new MockCellFactory());
+    cells = new Cells(new MockCellFactory());
+
+    location = Location.TOP_LEFT;
 
     const MockPlayerName = jest.fn<PlayerName>();
-    const mockPlayerName = new MockPlayerName();
+    mockPlayerName = new MockPlayerName();
+  });
 
-    const location = Location.TOP_LEFT;
+  it("occupies the cell", () => {
+    cells.occupy(location, mockPlayerName);
+
+    expect(mockCell.occupy).toHaveBeenCalledWith(mockPlayerName);
+  });
+
+  it("checks for a winner", () => {
+    const numberOfWinningCombinations = Cells.WINNING_COMBINATIONS.length;
 
     cells.occupy(location, mockPlayerName);
-    expect(mockCell.occupy).toHaveBeenCalledWith(mockPlayerName);
     expect(mockCell.hasSameOccupier).toHaveBeenCalledTimes(numberOfWinningCombinations);
   });
 });
