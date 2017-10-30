@@ -3,10 +3,10 @@ import {PlayerName} from "../src/PlayerName";
 
 describe("PlayerNames", () => {
   it("returns 'X'", () => {
-    expect(PlayerName.X).toBe(0);
+    expect(PlayerName.X).toBe(1);
   });
 
   it("returns 'O'", () => {
-    expect(PlayerName.O).toBe(1);
+    expect(PlayerName.O).toBe(2);
   });
 });

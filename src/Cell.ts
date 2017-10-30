@@ -9,14 +9,21 @@ export default class Cell {
     return occupiedCellErrorMessage;
   }
 
-  public occupy(player: PlayerName): void {
+  public occupy(playerName: PlayerName): void {
     if (this.occupier) {
       throw new Error(Cell.OCCUPIED_CELL_ERROR_MESSAGE);
     }
-    this.occupier = player;
+    this.occupier = playerName;
   }
 
   public hasSameOccupier(neighbours: [Cell]) {
-    throw new Error("Game won");
+    if (this._hasSameOccupant(neighbours[0]) && this._hasSameOccupant(neighbours[1])) {
+      throw new Error("Game won");
+    }
+  }
+
+  private _hasSameOccupant(other: Cell): boolean {
+    if (!this.occupier) { return false; }
+    return this.occupier === other.occupier;
   }
 }

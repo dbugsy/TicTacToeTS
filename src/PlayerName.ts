@@ -1,4 +1,4 @@
 export enum PlayerName {
-  X,
+  X = 1,
   O,
 }
