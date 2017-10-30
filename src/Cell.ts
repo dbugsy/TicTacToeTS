@@ -23,11 +23,17 @@ export default class Cell {
   }
 
   public isDraw(neighbours: [Cell]): void {
-    throw Error("Game over - it's a draw");
+    if (neighbours.every( (cell) => this._isOccupied(cell) )) {
+      throw Error("Game over - it's a draw");
+    }
   }
 
   private _hasSameOccupier(other: Cell): boolean {
     if (!this.occupier) { return false; }
     return this.occupier === other.occupier;
+  }
+
+  private _isOccupied(other: Cell): boolean {
+    return !(other.occupier === undefined);
   }
 }

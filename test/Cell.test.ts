@@ -61,5 +61,11 @@ describe("Cell", () => {
 
       expect( () => cell.isDraw([neighbour1, neighbour2])).toThrow("Game over - it's a draw");
     });
+
+    it("does not end the game as a draw if any cells are not occupied", () => {
+      const neighbour1 = new Cell();
+      const neighbour2 = new Cell();
+      expect( () => cell.isDraw([neighbour1, neighbour2])).not.toThrowError();
+    });
   });
 });
